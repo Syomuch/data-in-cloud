@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: data-in-cloud
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: "postgres:14.11"
+    container_name: postgres-database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=DataInCloud
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+
